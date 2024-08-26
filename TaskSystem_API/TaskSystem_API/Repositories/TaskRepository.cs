@@ -50,9 +50,24 @@ namespace TaskSystem_API.Repositories
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task<TaskModel> Update(TaskModel tarefa, int id)
+        public async Task<TaskModel> Update(TaskModel tarefa, int id)
         {
-            throw new NotImplementedException();
+            TaskModel taskById = await GetById(id);
+
+            if (taskById == null)
+            {
+                throw new Exception($"Tarefa para o ID {id} não foi encontrado no banco de dados.");
+            }
+
+            taskById.Name = tarefa.Name;
+            taskById.Description = tarefa.Description;
+            taskById.Status = tarefa.Status;
+            taskById.UserId = tarefa.UserId;
+
+            _dbContext.Tasks.Update(taskById);
+            await _dbContext.SaveChangesAsync();
+
+            return taskById;
         }
     }
 }
