@@ -11,9 +11,12 @@ namespace TaskSystem_API.Repositories
         {
             _dbContext = TaskSystemDBContext;
         }
-        public Task<UserModel> Add(UserModel user)
+        public async Task<UserModel> Add(UserModel user)
         {
-            throw new NotImplementedException();
+            await _dbContext.Users.AddAsync(user);
+            await _dbContext.SaveChangesAsync();
+
+            return user;
         }
 
         public Task<bool> Delete(int id)
