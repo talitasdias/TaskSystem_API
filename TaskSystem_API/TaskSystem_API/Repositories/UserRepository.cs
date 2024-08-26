@@ -1,10 +1,16 @@
-﻿using TaskSystem_API.Models;
+﻿using TaskSystem_API.Data;
+using TaskSystem_API.Models;
 using TaskSystem_API.Repositories.Interfaces;
 
 namespace TaskSystem_API.Repositories
 {
     public class UserRepository : IUserRepository
     {
+        private readonly TaskSystemDBContext _dbContext;
+        public UserRepository(TaskSystemDBContext TaskSystemDBContext)
+        {
+            _dbContext = TaskSystemDBContext;
+        }
         public Task<UserModel> Add(UserModel user)
         {
             throw new NotImplementedException();
