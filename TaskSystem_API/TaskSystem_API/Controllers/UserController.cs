@@ -15,9 +15,10 @@ namespace TaskSystem_API.Controllers
             _userRepository = userRepository;
         }
         [HttpGet]
-        public ActionResult<List<UserModel>> GetAllUsers()
+        public async Task<ActionResult<List<UserModel>>> GetAllUsers()
         {
-            return Ok();
+            List<UserModel> users = await _userRepository.GetAllUsers();
+            return Ok(users);
         }
     }
 }
