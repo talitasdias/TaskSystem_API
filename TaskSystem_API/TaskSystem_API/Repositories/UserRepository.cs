@@ -40,9 +40,9 @@ namespace TaskSystem_API.Repositories
             return await _dbContext.Users.ToListAsync();
         }
 
-        public Task<UserModel> GetById(int id)
+        public async Task<UserModel> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public Task<UserModel> Uptade(UserModel user, int id)
