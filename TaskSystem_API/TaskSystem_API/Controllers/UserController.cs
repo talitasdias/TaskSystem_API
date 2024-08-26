@@ -29,11 +29,20 @@ namespace TaskSystem_API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<UserModel>> Cadastrar([FromBody] UserModel userModel)
+        public async Task<ActionResult<UserModel>> Add([FromBody] UserModel userModel)
         {
             UserModel usuario = await _userRepository.Add(userModel);
 
             return Ok(usuario);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<UserModel>> Uptade([FromBody] UserModel userModel, int id)
+        {
+            userModel.Id = id;
+            UserModel user = await _userRepository.Uptade(userModel, id);
+
+            return Ok(user);
         }
     }
 }
