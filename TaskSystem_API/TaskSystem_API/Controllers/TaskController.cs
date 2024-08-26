@@ -21,5 +21,12 @@ namespace TaskSystem_API.Controllers
             List<TaskModel> tasks = await _taskRepository.GetAllTasks();
             return Ok(tasks);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TaskModel>> GetById(int id)
+        {
+            TaskModel task = await _taskRepository.GetById(id);
+            return Ok(task);
+        }
     }
 }
