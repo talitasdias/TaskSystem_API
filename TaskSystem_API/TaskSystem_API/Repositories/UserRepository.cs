@@ -45,9 +45,22 @@ namespace TaskSystem_API.Repositories
             return await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task<UserModel> Uptade(UserModel user, int id)
+        public async Task<UserModel> Uptade(UserModel user, int id)
         {
-            throw new NotImplementedException();
+            UserModel userById = await GetById(id);
+
+            if (userById == null)
+            {
+                throw new Exception($"User with ID: {id} was not found in the database.");
+            }
+
+            userById.Name = user.Name;
+            userById.Email = user.Email;
+
+            _dbContext.Users.Update(userById);
+            await _dbContext.SaveChangesAsync();
+
+            return userById;
         }
     }
 }
