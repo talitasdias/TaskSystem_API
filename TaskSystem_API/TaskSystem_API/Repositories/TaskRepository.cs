@@ -1,10 +1,18 @@
-﻿using TaskSystem_API.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using TaskSystem_API.Data;
+using TaskSystem_API.Models;
 using TaskSystem_API.Repositories.Interfaces;
 
 namespace TaskSystem_API.Repositories
 {
     public class TaskRepository : ITaskRepository
     {
+
+        private readonly TaskSystemDBContext _dbContext;
+        public TaskRepository(TaskSystemDBContext TaskSystemDBContext)
+        {
+            _dbContext = TaskSystemDBContext;
+        }
         public Task<TaskModel> Add(TaskModel tarefa)
         {
             throw new NotImplementedException();
