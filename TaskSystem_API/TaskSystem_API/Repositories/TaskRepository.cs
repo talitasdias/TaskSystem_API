@@ -13,9 +13,12 @@ namespace TaskSystem_API.Repositories
         {
             _dbContext = TaskSystemDBContext;
         }
-        public Task<TaskModel> Add(TaskModel tarefa)
+        public async Task<TaskModel> Add(TaskModel task)
         {
-            throw new NotImplementedException();
+            await _dbContext.Tasks.AddAsync(task);
+            await _dbContext.SaveChangesAsync();
+
+            return task;
         }
 
         public Task<bool> Delete(int id)
