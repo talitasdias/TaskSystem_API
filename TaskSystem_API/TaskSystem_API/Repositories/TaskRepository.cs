@@ -36,9 +36,11 @@ namespace TaskSystem_API.Repositories
             return true;
         }
 
-        public Task<List<TaskModel>> GetAllTasks()
+        public async Task<List<TaskModel>> GetAllTasks()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Tasks
+                .Include(x => x.User)
+                .ToListAsync();
         }
 
         public Task<TaskModel> GetById(int id)
