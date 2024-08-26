@@ -28,5 +28,13 @@ namespace TaskSystem_API.Controllers
             TaskModel task = await _taskRepository.GetById(id);
             return Ok(task);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<TaskModel>> Register([FromBody] TaskModel taskModel)
+        {
+            TaskModel task = await _taskRepository.Add(taskModel);
+
+            return Ok(task);
+        }
     }
 }
