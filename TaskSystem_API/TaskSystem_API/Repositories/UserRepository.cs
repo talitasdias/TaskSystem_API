@@ -1,4 +1,5 @@
-﻿using TaskSystem_API.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using TaskSystem_API.Data;
 using TaskSystem_API.Models;
 using TaskSystem_API.Repositories.Interfaces;
 
@@ -34,9 +35,9 @@ namespace TaskSystem_API.Repositories
             return true;
         }
 
-        public Task<List<UserModel>> GetAllUsers()
+        public async Task<List<UserModel>> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Users.ToListAsync();
         }
 
         public Task<UserModel> GetById(int id)
