@@ -6,8 +6,8 @@ namespace TaskSystem_API.Repositories.Interfaces
     {
         Task<List<TaskModel>> GetAllTasks();
         Task<TaskModel> GetById(int id);
-        Task<TaskModel> Add(TaskModel tarefa);
-        Task<TaskModel> Update(TaskModel tarefa, int id);
+        Task<TaskModel> Add(TaskModel task);
+        Task<TaskModel> Update(TaskModel task, int id);
         Task<bool> Delete(int id);
     }
 }
