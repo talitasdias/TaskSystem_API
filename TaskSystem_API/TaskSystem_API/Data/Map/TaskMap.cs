@@ -4,9 +4,9 @@ using TaskSystem_API.Models;
 
 namespace TaskSystem_API.Data.Map
 {
-    public class TaskMap : IEntityTypeConfiguration<UserModel>
+    public class TaskMap : IEntityTypeConfiguration<TaskModel>
     {
-        public void Configure(EntityTypeBuilder<UserModel> builder)
+        public void Configure(EntityTypeBuilder<TaskModel> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).IsRequired().HasMaxLength(255);
