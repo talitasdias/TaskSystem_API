@@ -43,9 +43,11 @@ namespace TaskSystem_API.Repositories
                 .ToListAsync();
         }
 
-        public Task<TaskModel> GetById(int id)
+        public async Task<TaskModel> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Tasks
+                .Include(x => x.User)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public Task<TaskModel> Update(TaskModel tarefa, int id)
