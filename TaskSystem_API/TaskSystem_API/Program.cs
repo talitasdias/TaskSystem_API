@@ -1,4 +1,9 @@
 
+using Microsoft.EntityFrameworkCore;
+using TaskSystem_API.Data;
+using TaskSystem_API.Repositories;
+using TaskSystem_API.Repositories.Interfaces;
+
 namespace TaskSystem_API
 {
     public class Program
@@ -13,6 +18,13 @@ namespace TaskSystem_API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddEntityFrameworkSqlServer()
+                .AddDbContext<TaskSystemDBContext>(
+                    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+                );
+
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
 
             var app = builder.Build();
 
