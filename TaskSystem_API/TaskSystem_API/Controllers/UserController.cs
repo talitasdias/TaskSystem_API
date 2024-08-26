@@ -20,5 +20,12 @@ namespace TaskSystem_API.Controllers
             List<UserModel> users = await _userRepository.GetAllUsers();
             return Ok(users);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<List<UserModel>>> GetById(int id)
+        {
+            UserModel user = await _userRepository.GetById(id);
+            return Ok(user);
+        }
     }
 }
