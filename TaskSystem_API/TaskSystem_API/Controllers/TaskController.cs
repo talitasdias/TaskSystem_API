@@ -36,5 +36,14 @@ namespace TaskSystem_API.Controllers
 
             return Ok(task);
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<TaskModel>> Update([FromBody] TaskModel taskModel, int id)
+        {
+            taskModel.Id = id;
+            TaskModel task = await _taskRepository.Update(taskModel, id);
+
+            return Ok(task);
+        }
     }
 }
