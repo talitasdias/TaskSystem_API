@@ -19,9 +19,19 @@ namespace TaskSystem_API.Repositories
             return user;
         }
 
-        public Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            UserModel user = await GetById(id);
+
+            if (user == null)
+            {
+                throw new Exception($"User with ID: {id} was not found in the database.");
+            }
+
+            _dbContext.Users.Remove(user);
+            await _dbContext.SaveChangesAsync();
+
+            return true;
         }
 
         public Task<List<UserModel>> GetAllUsers()
