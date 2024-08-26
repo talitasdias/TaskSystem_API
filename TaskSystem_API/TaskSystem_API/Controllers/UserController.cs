@@ -22,10 +22,18 @@ namespace TaskSystem_API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<UserModel>>> GetById(int id)
+        public async Task<ActionResult<UserModel>> GetById(int id)
         {
             UserModel user = await _userRepository.GetById(id);
             return Ok(user);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<UserModel>> Cadastrar([FromBody] UserModel userModel)
+        {
+            UserModel usuario = await _userRepository.Add(userModel);
+
+            return Ok(usuario);
         }
     }
 }
