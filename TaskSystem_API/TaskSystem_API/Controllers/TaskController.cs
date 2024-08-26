@@ -45,5 +45,13 @@ namespace TaskSystem_API.Controllers
 
             return Ok(task);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<TaskModel>> Delete(int id)
+        {
+            bool deleted = await _taskRepository.Delete(id);
+
+            return Ok(deleted);
+        }
     }
 }
