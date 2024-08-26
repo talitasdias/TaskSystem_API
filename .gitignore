@@ -1,0 +1,28 @@
+# Diretórios de build e dependências
+TaskSystem_API/TaskSystem_API/bin/
+TaskSystem_API/TaskSystem_API/obj/
+
+# Configurações do Visual Studio
+TaskSystem_API/.vscode/
+TaskSystem_API/.vs/
+TaskSystem_API/TaskSystem_API/*.user
+# Arquivos de log
+TaskSystem_API/TaskSystem_API/*.log
+
+# Arquivos gerados por pacotes NuGet
+TaskSystem_API/TaskSystem_API/packages/
+TaskSystem_API/TaskSystem_API/*.nupkg
+
+# Configurações do Rider e do Visual Studio Code
+TaskSystem_API/.idea/
+TaskSystem_API/TaskSystem_API/.idea/
+TaskSystem_API/TaskSystem_API/*.csproj.user
+
+# Arquivos de migração gerados pelo EF Core
+TaskSystem_API/TaskSystem_API/Migrations/
+TaskSystem_API/TaskSystem_API/migrations/
+
+# Arquivos de segredo
+TaskSystem_API/TaskSystem_API/appsettings.Local.json
+TaskSystem_API/TaskSystem_API/appsettings.*.json
+TaskSystem_API/TaskSystem_API/secrets.json
