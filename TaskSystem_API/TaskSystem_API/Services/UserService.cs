@@ -28,7 +28,7 @@ namespace TaskSystem_API.Services
 
         public Task<UserModel> Register(UserModel userModel)
         {
-            throw new NotImplementedException();
+            return _userRepository.Add(userModel);
         }
 
         public Task<UserModel> Update(UserModel userModel, int id)
