@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using TaskSystem_API.Data;
 using TaskSystem_API.Repositories;
 using TaskSystem_API.Repositories.Interfaces;
+using TaskSystem_API.Services;
 using TaskSystem_API.Services.Interfaces;
 
 namespace TaskSystem_API
@@ -27,7 +28,7 @@ namespace TaskSystem_API
 
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<ITaskRepository, TaskRepository>();
-            builder.Services.AddScoped<IUserService, IUserService>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
 
