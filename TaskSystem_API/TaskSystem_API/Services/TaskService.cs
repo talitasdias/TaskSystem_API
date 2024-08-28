@@ -18,7 +18,7 @@ namespace TaskSystem_API.Services
 
         public Task<TaskModel> GetById(int id)
         {
-            throw new NotImplementedException();
+            return _taskRepository.GetById(id);
         }
 
         public Task<List<TaskModel>> ListAll()
