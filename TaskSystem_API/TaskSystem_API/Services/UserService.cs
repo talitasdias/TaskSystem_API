@@ -18,7 +18,7 @@ namespace TaskSystem_API.Services
 
         public Task<List<UserModel>> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return _userRepository.GetAllUsers();
         }
 
         public Task<UserModel> GetById(int id)
