@@ -31,9 +31,22 @@ namespace TaskSystem_API.Services
             return _taskRepository.Add(taskModel);
         }
 
-        public Task<TaskModel> Update(TaskModel newTask, int id)
+        public async Task<TaskModel> Update(TaskModel newTask, int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+            {
+                throw new ArgumentException("The ID must be greater than 0.", nameof(id));
+            }
+
+            TaskModel taskById = await _taskRepository.GetById(id);
+
+            if (taskById == null)
+            {
+                throw new KeyNotFoundException($"No task found with the ID {id}.");
+            }
+
+            newTask.Id = id;
+            return await _taskRepository.Update(newTask, taskById, id);
         }
     }
 }
