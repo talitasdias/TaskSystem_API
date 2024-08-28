@@ -23,7 +23,7 @@ namespace TaskSystem_API.Services
 
         public Task<UserModel> GetById(int id)
         {
-            throw new NotImplementedException();
+            return _userRepository.GetById(id);
         }
 
         public Task<UserModel> Register(UserModel userModel)
