@@ -1,10 +1,16 @@
 ﻿using TaskSystem_API.Models;
+using TaskSystem_API.Repositories.Interfaces;
 using TaskSystem_API.Services.Interfaces;
 
 namespace TaskSystem_API.Services
 {
     public class UserService : IUserService
     {
+        private readonly IUserRepository _userRepository;
+        public UserService(IUserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
         public Task<bool> Delete(int id)
         {
             throw new NotImplementedException();
