@@ -29,6 +29,7 @@ namespace TaskSystem_API
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<ITaskRepository, TaskRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ITaskService, TaskService>();
 
             var app = builder.Build();
 
