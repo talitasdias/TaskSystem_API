@@ -13,7 +13,7 @@ namespace TaskSystem_API.Services
         }
         public Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            return _userRepository.Delete(id);
         }
 
         public Task<List<UserModel>> GetAllUsers()
