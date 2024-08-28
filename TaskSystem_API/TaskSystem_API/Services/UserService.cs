@@ -33,7 +33,8 @@ namespace TaskSystem_API.Services
 
         public Task<UserModel> Update(UserModel userModel, int id)
         {
-            throw new NotImplementedException();
+            userModel.Id = id;
+            return _userRepository.Uptade(userModel, id);
         }
     }
 }
