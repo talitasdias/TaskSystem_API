@@ -31,7 +31,7 @@ namespace TaskSystem_API.Services
             return _taskRepository.Add(taskModel);
         }
 
-        public async Task<TaskModel> Update(TaskModel newTask, int id)
+        public async Task<TaskModel> Update(TaskModel taskModel, int id)
         {
             if (id <= 0)
             {
@@ -45,8 +45,8 @@ namespace TaskSystem_API.Services
                 throw new KeyNotFoundException($"No task found with the ID {id}.");
             }
 
-            newTask.Id = id;
-            return await _taskRepository.Update(newTask, taskById, id);
+            taskModel.Id = id;
+            return await _taskRepository.Update(taskModel, id);
         }
     }
 }
