@@ -23,7 +23,7 @@ namespace TaskSystem_API.Services
 
         public Task<List<TaskModel>> ListAll()
         {
-            throw new NotImplementedException();
+            return _taskRepository.GetAllTasks();
         }
 
         public Task<TaskModel> Register(TaskModel taskModel)
